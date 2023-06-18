@@ -4,11 +4,9 @@ export default class Person {
         this.hoTen = '';
         this.email = '';
         this.diaChi = '';
+        this.loaiPerson = '';
 
     }
-    // diemTB = () => {
-    //     return (this.diemToan + this.diemHoa + this.diemLy) / 3;
-    // };
 }
 
 export class HocVien extends Person{

@@ -52,3 +52,18 @@ document.getElementById('btnThemKhachHang').addEventListener
     listPerson.renderKhachHang();
 });
 
+// VD về Destructuring
+let pet = {
+    name: 'Gâu',
+    age: 3,
+    size: {
+        wei: '30kg',
+        hei: '56cm'
+    }
+}
+
+let {name, age} = pet;
+let {wei, hei} = pet.size;
+console.log(name, age);
+console.log(wei, hei);
+

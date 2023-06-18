@@ -5,6 +5,7 @@ import { KhachHang } from "./Person.js";
 
 export default class ListPerson {
     constructor() {
+        this.arrListPerson = [];
         this.arrListHocVien = [];
         this.arrListNhanVien = [];
         this.arrListKhachHang = [];
@@ -12,13 +13,16 @@ export default class ListPerson {
     themHocVien(person) {
         this.arrListHocVien.push(person);
     }
-    
+
     renderHocVien() {
+        // let contentPerson = 
+        // let person = new Person();
+        // console.log(person);
         let content = this.arrListHocVien.map((item, index) => {
             let hocVien = new HocVien();
             Object.assign(hocVien, item);
 
-            let {personID, hoTen, email, diaChi, diemTB} = hocVien;
+            let { personID, hoTen, email, diaChi, diemTB } = hocVien;
             console.log(hocVien);
             return `
             <tr>
@@ -47,7 +51,7 @@ export default class ListPerson {
             let nhanVien = new NhanVien();
             Object.assign(nhanVien, item);
 
-            let {personID, hoTen, email, diaChi, tinhLuong} = nhanVien;
+            let { personID, hoTen, email, diaChi, tinhLuong } = nhanVien;
             console.log(nhanVien);
             return `
             <tr>
@@ -76,7 +80,7 @@ export default class ListPerson {
             let khachHang = new KhachHang();
             Object.assign(khachHang, item);
 
-            let {personID, hoTen, email, diaChi, tenCty, giaTriHoaDon, danhGia} = khachHang;
+            let { personID, hoTen, email, diaChi, tenCty, giaTriHoaDon, danhGia } = khachHang;
             console.log(khachHang);
             return `
             <tr>
