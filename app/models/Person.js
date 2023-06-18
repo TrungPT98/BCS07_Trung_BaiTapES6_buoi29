@@ -6,7 +6,13 @@ export default class Person {
         this.diaChi = '';
         this.loaiPerson = '';
 
-    }
+    };
+    diemTB = () => {
+        return ((this.diemToan*1) + (this.diemHoa*1) + (this.diemLy*1)) / 3;
+    };
+    tinhLuong = () => {
+        return ((this.soNgayLam*1) * (this.luongNgay*1));
+    };
 }
 
 export class HocVien extends Person{
@@ -16,9 +22,7 @@ export class HocVien extends Person{
         this.diemHoa = '';
         this.diemLy = '';
     }
-    diemTB = () => {
-        return ((this.diemToan*1) + (this.diemHoa*1) + (this.diemLy*1)) / 3;
-    };
+    
 }
 
 export class NhanVien extends Person{
@@ -28,9 +32,7 @@ export class NhanVien extends Person{
         this.luongNgay = '';
 
     }
-    tinhLuong = () => {
-        return ((this.soNgayLam*1) * (this.luongNgay*1));
-    };
+    
 }
 
 export class KhachHang extends Person{

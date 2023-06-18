@@ -68,7 +68,7 @@
                 <div class="row">
                     <div class="col-8">
                         <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal" id="firstDisabled">
+                            data-bs-target="#exampleModal" id="btnThem">
                             Thêm thành viên
                         </button>
                         <!-- Modal -->
@@ -79,7 +79,7 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Thêm thành viên</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                            aria-label="Close" id="btnClose"></button>
                                     </div>
 
                                     <div class="modal-body">
@@ -116,7 +116,7 @@
                                                 <div class="col-md-12 mb-3">
                                                     <label for="loaiPerson">Loại thành viên</label>
                                                     <select class="form-select d-block w-100" id="loaiPerson" required>
-                                                        <!-- <option selected>Chọn mức độ hài lòng</option> -->
+                                                        <option selected>Chọn loại thành viên</option>
                                                         <option value="hocVien">Học viên</option>
                                                         <option value="nhanVien">Nhân viên</option>
                                                         <option value="khachHang">Khách hàng</option>
@@ -196,182 +196,19 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" id="btnCapNhatHocVien">Cập
+                                        <button type="button" class="btn btn-primary" id="btnCapNhatPerson">Cập
                                             Nhật</button>
-                                        <button type="button" class="btn btn-primary" id="btnThemHocVien">Thêm</button>
+                                        <button type="button" class="btn btn-primary" id="btnThemPerson">Thêm</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal_1">
-                            Thêm nhân viên
-                        </button>
-                        Modal
-                        <div class="modal fade" id="exampleModal_1" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Thêm nhân viên</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
 
-                                    <div class="modal-body">
-                                        <form class="needs-validation" id="personFormNhanVien">
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="personID">Mã ID</label>
-                                                    <input type="text" class="form-control" id="personID"
-                                                        placeholder="Nhập ID" value="" required>
-                                                    <div id="invalidID" class="invalid-feedback">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="hoTen">Họ tên</label>
-                                                    <input type="text" class="form-control" id="hoTen"
-                                                        placeholder="Nhập họ tên" required>
-                                                    <div id="invalidTen" class="invalid-form">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 mb-3">
-                                                    <label for="email">Email</label>
-                                                    <input type="email" class="form-control" id="email"
-                                                        placeholder="Nhập email" required>
-                                                    <div id="invalidEmail" class="invalid-form">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 mb-3">
-                                                    <label for="diaChi">Địa chỉ</label>
-                                                    <input type="text" class="form-control" id="diaChi"
-                                                        placeholder="Nhập địa chỉ" required>
-                                                    <div id="invalidDiaChi" class="invalid-form">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="soNgayLam">Số ngày làm việc</label>
-                                                    <input type="text" class="form-control" id="soNgayLam"
-                                                        placeholder="Nhập số ngày làm" required>
-                                                    <div id="invalidSoNgayLam" class="invalid-form">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="luongNgay">Lương theo ngày</label>
-                                                    <input type="text" class="form-control" id="luongNgay"
-                                                        placeholder="Nhập số lương 1 ngày" required>
-                                                    <div id="invalidLuongNgay" class="invalid-form">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-success" id="btnCapNhatNhanVien">Cập
-                                            Nhật</button>
-                                        <button type="button" class="btn btn-success" id="btnThemNhanVien">Thêm</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- <button type="button" class="btn btn-info mb-3" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal_2">
-                            Thêm khách hàng
-                        </button>
-                        Modal
-                        <div class="modal fade" id="exampleModal_2" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Thêm khách hàng</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <form class="needs-validation" id="personFormKhachHang">
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="personID">Mã ID</label>
-                                                    <input type="text" class="form-control" id="personID"
-                                                        placeholder="Nhập ID" value="" required>
-                                                    <div id="invalidID" class="invalid-feedback">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="hoTen">Họ tên</label>
-                                                    <input type="text" class="form-control" id="hoTen"
-                                                        placeholder="Nhập họ tên" required>
-                                                    <div id="invalidTen" class="invalid-form">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 mb-3">
-                                                    <label for="email">Email</label>
-                                                    <input type="email" class="form-control" id="email"
-                                                        placeholder="Nhập email" required>
-                                                    <div id="invalidEmail" class="invalid-form">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 mb-3">
-                                                    <label for="diaChi">Địa chỉ</label>
-                                                    <input type="text" class="form-control" id="diaChi"
-                                                        placeholder="Nhập địa chỉ" required>
-                                                    <div id="invalidDiaChi" class="invalid-form">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="tenCty">Tên công ty</label>
-                                                    <input type="text" class="form-control" id="tenCty"
-                                                        placeholder="Nhập tên cty" required>
-                                                    <div id="invalidTenCty" class="invalid-form">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="triGiaHoaDon">Giá trị hóa đơn</label>
-                                                    <input type="text" class="form-control" id="triGiaHoaDon"
-                                                        placeholder="Nhập giá trị hóa đơn" required>
-                                                    <div id="invalidHoaDon" class="invalid-form">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="danhGia">Đánh giá</label>
-                                                    <select class="form-select d-block w-100" id="danhGia" required>
-                                                        <option selected>Chọn mức độ hài lòng</option>
-                                                        <option value="danhGia1">Rất tốt</option>
-                                                        <option value="danhGia2">Tốt</option>
-                                                        <option value="danhGia3">Bình thường</option>
-                                                        <option value="danhGia4">Không tốt</option>
-                                                        <option value="danhGia5">Tệ</option>
-                                                    </select>
-                                                    <div id="invalidDanhGia" class="invalid-feedback">
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-success" id="btnCapNhatKhachHang">Cập
-                                            Nhật</button>
-                                        <button type="button" class="btn btn-success"
-                                            id="btnThemKhachHang">Thêm</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                     <div class="col-4">
                         <div class="form-group row">
-                            <label for="selLoai" class="col-sm-2 col-form-label">Show</label>
+                            <button class="btn btn-info col-sm-2" id="locPerson"><i class="fa-solid fa-filter"></i>  Filter</button>
+                            <!-- <label for="selLoai" class="col-sm-2 col-form-label">Show</label> -->
                             <div class="col-sm-10">
                                 <select class="form-select" id="selLoai">
                                     <option selected>Chọn loại thành viên</option>
