@@ -7,13 +7,13 @@ import ListPerson from "../models/ListPerson.js";
 
 let listPerson = new ListPerson();
 
-document.getElementById('firstDisabled').addEventListener('click', () => {
-    document.getElementById('soNgayLam').disabled = true;
-    document.getElementById('luongNgay').disabled = true;
-    document.getElementById('tenCty').disabled = true;
-    document.getElementById('triGiaHoaDon').disabled = true;
-    document.getElementById('danhGia').disabled = true;
-})
+// document.getElementById('firstDisabled').addEventListener('click', () => {
+//     document.getElementById('soNgayLam').disabled = true;
+//     document.getElementById('luongNgay').disabled = true;
+//     document.getElementById('tenCty').disabled = true;
+//     document.getElementById('triGiaHoaDon').disabled = true;
+//     document.getElementById('danhGia').disabled = true;
+// })
 
 document.getElementById('btnThemHocVien').addEventListener
     ('click', () => {
@@ -118,7 +118,7 @@ document.getElementById('loaiPerson').addEventListener('change', () => {
         document.getElementById('soNgayLam').disabled = true;
         document.getElementById('luongNgay').disabled = true;
         document.getElementById('tenCty').disabled = true;
-        document.getElementById('triGiaHoaDon').disabled = true;
+        document.getElementById('giaTriHoaDon').disabled = true;
         document.getElementById('danhGia').disabled = true;
     } else if (loaiPerson == "nhanVien") {
         document.getElementById('soNgayLam').disabled = false;
@@ -128,11 +128,11 @@ document.getElementById('loaiPerson').addEventListener('change', () => {
         document.getElementById('diemLy').disabled = true;
         document.getElementById('diemHoa').disabled = true;
         document.getElementById('tenCty').disabled = true;
-        document.getElementById('triGiaHoaDon').disabled = true;
+        document.getElementById('giaTriHoaDon').disabled = true;
         document.getElementById('danhGia').disabled = true;
     } else if (loaiPerson == "khachHang") {
         document.getElementById('tenCty').disabled = false;
-        document.getElementById('triGiaHoaDon').disabled = false;
+        document.getElementById('giaTriHoaDon').disabled = false;
         document.getElementById('danhGia').disabled = false;
 
         document.getElementById('diemToan').disabled = true;
