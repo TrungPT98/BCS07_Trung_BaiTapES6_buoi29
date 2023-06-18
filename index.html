@@ -68,8 +68,8 @@
                 <div class="row">
                     <div class="col-8">
                         <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            Thêm học viên
+                            data-bs-target="#exampleModal" id="firstDisabled">
+                            Thêm thành viên
                         </button>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -77,13 +77,13 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Thêm học viên</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Thêm thành viên</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
 
                                     <div class="modal-body">
-                                        <form class="needs-validation" id="personFormHocVien">
+                                        <form class="needs-validation" id="personForm">
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label for="personID">Mã ID</label>
@@ -113,25 +113,79 @@
                                                     <div id="invalidDiaChi" class="invalid-form">
                                                     </div>
                                                 </div>
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="loaiPerson">Loại thành viên</label>
+                                                    <select class="form-select d-block w-100" id="loaiPerson" required>
+                                                        <!-- <option selected>Chọn mức độ hài lòng</option> -->
+                                                        <option value="hocVien">Học viên</option>
+                                                        <option value="nhanVien">Nhân viên</option>
+                                                        <option value="khachHang">Khách hàng</option>
+                                                    </select>
+                                                    <div id="invalidLoaiPerson" class="invalid-feedback">
+
+                                                    </div>
+                                                </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label for="diemToan">Điểm Toán</label>
-                                                    <input type="text" class="form-control" id="diemToan"
+                                                    <input type="text" class="form-control disabled" id="diemToan"
                                                         placeholder="Nhập điểm toán" required>
                                                     <div id="invalidDiemToan" class="invalid-form">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label for="diemLy">Điểm Lý</label>
-                                                    <input type="text" class="form-control" id="diemLy"
+                                                    <input type="text" class="form-control disabled" id="diemLy"
                                                         placeholder="Nhập điểm lý" required>
                                                     <div id="invalidDiemLy" class="invalid-form">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label for="diemHoa">Điểm Hóa</label>
-                                                    <input type="text" class="form-control" id="diemHoa"
+                                                    <input type="text" class="form-control disabled" id="diemHoa"
                                                         placeholder="Nhập điểm hóa" required>
                                                     <div id="invalidDiemHoa" class="invalid-form">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="soNgayLam">Số ngày làm việc</label>
+                                                    <input type="text" class="form-control disabled" id="soNgayLam"
+                                                        placeholder="Nhập số ngày làm" required>
+                                                    <div id="invalidSoNgayLam" class="invalid-form">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="luongNgay">Lương theo ngày</label>
+                                                    <input type="text" class="form-control disabled" id="luongNgay"
+                                                        placeholder="Nhập số lương 1 ngày" required>
+                                                    <div id="invalidLuongNgay" class="invalid-form">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="tenCty">Tên công ty</label>
+                                                    <input type="text" class="form-control disabled" id="tenCty"
+                                                        placeholder="Nhập tên cty" required>
+                                                    <div id="invalidTenCty" class="invalid-form">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="triGiaHoaDon">Giá trị hóa đơn</label>
+                                                    <input type="text" class="form-control disabled" id="triGiaHoaDon"
+                                                        placeholder="Nhập giá trị hóa đơn" required>
+                                                    <div id="invalidHoaDon" class="invalid-form">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="danhGia">Đánh giá</label>
+                                                    <select class="form-select d-block w-100 disabled" id="danhGia" required>
+                                                        <option selected>Chọn mức độ hài lòng</option>
+                                                        <option value="danhGia1">Rất tốt</option>
+                                                        <option value="danhGia2">Tốt</option>
+                                                        <option value="danhGia3">Bình thường</option>
+                                                        <option value="danhGia4">Không tốt</option>
+                                                        <option value="danhGia5">Tệ</option>
+                                                    </select>
+                                                    <div id="invalidDanhGia" class="invalid-feedback">
+
                                                     </div>
                                                 </div>
 
@@ -149,11 +203,11 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal"
+                        <!-- <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal"
                             data-bs-target="#exampleModal_1">
                             Thêm nhân viên
                         </button>
-                        <!-- Modal -->
+                        Modal
                         <div class="modal fade" id="exampleModal_1" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
@@ -223,12 +277,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <button type="button" class="btn btn-info mb-3" data-bs-toggle="modal"
+                        </div> -->
+                        <!-- <button type="button" class="btn btn-info mb-3" data-bs-toggle="modal"
                             data-bs-target="#exampleModal_2">
                             Thêm khách hàng
                         </button>
-                        <!-- Modal -->
+                        Modal
                         <div class="modal fade" id="exampleModal_2" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
@@ -313,7 +367,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-4">
                         <div class="form-group row">
@@ -343,6 +397,7 @@
                                 <th>Điểm TB</th>
                                 <th>Lương</th>
                                 <th>Tên Cty</th>
+                                <th>Giá trị HĐ</th>
                                 <th>Đánh giá</th>
                                 <th></th>
                             </tr>
