@@ -85,9 +85,14 @@ document.getElementById('btnCapNhatPerson').onclick = () => {
     listPerson.chinhSuaPerson(person);
 }
 
-let name = ['B', 'D', 'a', 'y', 'G'];
-document.getElementById('locPerson').onclick = () => {
-    listPerson.sortNames(name);
-    console.log(name);
+// let name = ['B', 'D', 'a', 'y', 'G'];
+document.getElementById('sapXep').onclick = () => {
+    // let noe = [listPerson.layLocal()];
+    // console.log(noe);
+    listPerson.sortNames();
+    // console.log(name);
 }
- 
+
+document.getElementById('locPerson').onclick = () => {
+    listPerson.filterPerson();
+}

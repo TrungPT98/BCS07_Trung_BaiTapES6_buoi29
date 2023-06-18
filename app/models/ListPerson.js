@@ -137,14 +137,15 @@ export default class ListPerson {
         }
     }
 
-    sortNames(names) {
+    sortNames() {
         // Create a copy of the original array to avoid modifying the input array
-        let sortedNames = names;
+        let sortedNames = this.arrListPerson;
+        // console.log(this.arrListPerson);
         
         sortedNames.sort((a, b) => {
           // Convert names to lowercase for case-insensitive sorting
-          let nameA = a.toLowerCase();
-          let nameB = b.toLowerCase();
+          let nameA = a.hoTen.toLowerCase();
+          let nameB = b.hoTen.toLowerCase();
           
           // Compare the lowercase names and return the appropriate value
           if (nameA < nameB) {
@@ -156,13 +157,69 @@ export default class ListPerson {
           }
         });
         
-        return sortedNames;
-      };
-      
-      // Example usage:
-    //   const names = ["John", "Alice", "bob", "David"];
-    //   const sortedNames = sortNames(names);
-    //   console.log(sortedNames);
-      
+        // console.log(sortedNames);
+        this.renderPerson();
+        // return sortedNames;
+      };  
+
+      filterPerson() {
+        let person = this.arrListPerson;
+        let content = "";
+        if (person.loaiPerson == "hocVien") {
+            return content = `
+            <tr>
+                    <td>${person.personID}</td>
+                    <td>${person.hoTen}</td>
+                    <td>${person.email}</td>
+                    <td>${person.diaChi}</td>
+                    <td>${person.diemTB()}</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>
+                    <button class="btn btn-danger" onclick="xoaPerson('${person.personID}')">Xoá</button>
+                    <button class="btn btn-warning" onclick="layThongTinPerson('${person.personID}')">Sửa</button>
+                    </td>
+                </tr>
+            `
+        } else if (person.loaiPerson == "nhanVien") {
+            return content = `
+            <tr>
+            <td>${person.personID}</td>
+            <td>${person.hoTen}</td>
+            <td>${person.email}</td>
+            <td>${person.diaChi}</td>
+            <td>X</td>
+            <td>${person.tinhLuong()}</td>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+            <td>
+            <button class="btn btn-danger" onclick="xoaPerson('${person.personID}')">Xoá</button>
+            <button class="btn btn-warning" onclick="layThongTinPerson('${person.personID}')">Sửa</button>
+            </td>
+        </tr>
+            `
+        } else if (person.loaiPerson == "khachHang") {
+            return content = `
+            <tr>
+            <td>${person.personID}</td>
+            <td>${person.hoTen}</td>
+            <td>${person.email}</td>
+            <td>${person.diaChi}</td>
+            <td>X</td>
+            <td>X</td>
+            <td>${person.tenCty}</td>
+            <td>${person.giaTriHoaDon}</td>
+            <td>${person.danhGia}</td>
+            <td>
+            <button class="btn btn-danger" onclick="xoaPerson('${person.personID}')">Xoá</button>
+            <button class="btn btn-warning" onclick="layThongTinPerson('${person.personID}')">Sửa</button>
+            </td>
+        </tr>
+            `
+        }
+      }
 
 }
