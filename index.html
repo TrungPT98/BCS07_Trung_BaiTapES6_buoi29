@@ -65,8 +65,8 @@
 
                 <h2>Danh Sách</h2>
                 <!-- Button trigger modal -->
-                <div class="row">
-                    <div class="col-8">
+                <div class="row mb-2">
+                    <div class="col-4">
                         <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
                             data-bs-target="#exampleModal" id="btnThem">
                             Thêm thành viên
@@ -205,18 +205,24 @@
                         </div>
 
                     </div>
-                    <div class="col-4">
+                    <div class="col-8">
                         <div class="form-group row">
-                            <button class="btn btn-success col-sm-2 me-2" id="sapXep">Sắp xếp</button>
-                            <button class="btn btn-info col-sm-2" id="locPerson"><i class="fa-solid fa-filter"></i>  Filter</button>
-                            <!-- <label for="selLoai" class="col-sm-2 col-form-label">Show</label> -->
-                            <div class="col-sm-6">
-                                <select class="form-select" id="selLoai">
-                                    <option selected>Chọn loại thành viên</option>
-                                    <option value="1">Học viên</option>
-                                    <option value="2">Nhân viên</option>
-                                    <option value="3">Khách hàng</option>
-                                </select>
+                            <div class="col-4">
+                                <button class="btn btn-success me-2" id="sapXep">Sắp xếp</button>
+                            </div>
+                            
+                            <div class="col-8 row">
+                                <button class="btn btn-warning col-2 me-2" id="reset">Reset</button>
+                                <button class="btn btn-info col-2" id="locPerson"><i class="fa-solid fa-filter"></i>  Filter</button>
+                                <div class="col-6">
+                                    <select class="form-select" id="selLoai">
+                                        <option selected>Chọn loại thành viên</option>
+                                        <option value="1">Học viên</option>
+                                        <option value="2">Nhân viên</option>
+                                        <option value="3">Khách hàng</option>
+                                    </select>
+
+                                </div>
                             </div>
                         </div>
                     </div>

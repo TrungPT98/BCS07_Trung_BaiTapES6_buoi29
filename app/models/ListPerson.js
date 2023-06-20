@@ -18,76 +18,37 @@ export default class ListPerson {
             let person = new Person();
             Object.assign(person, item);
             console.log(person);
-            let {personID, hoTen, email, diaChi, loaiPerson, diemTB, tinhLuong, tenCty, giaTriHoaDon, danhGia} = person;
-
-            if (loaiPerson == "hocVien") {
-                return `
-                <tr>
-                    <td>${personID}</td>
-                    <td>${hoTen}</td>
-                    <td>${email}</td>
-                    <td>${diaChi}</td>
-                    <td>${diemTB()}</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>
-                    <button class="btn btn-danger" onclick="xoaPerson('${personID}')">Xoá</button>
-                    <button class="btn btn-warning" onclick="layThongTinPerson('${personID}')">Sửa</button>
-                    </td>
-                </tr>
-                `
-            } else if (loaiPerson == "nhanVien") {
-                return `
-                <tr>
-                    <td>${personID}</td>
-                    <td>${hoTen}</td>
-                    <td>${email}</td>
-                    <td>${diaChi}</td>
-                    <td>X</td>
-                    <td>${tinhLuong()}</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>
-                    <button class="btn btn-danger" onclick="xoaPerson('${personID}')">Xoá</button>
-                    <button class="btn btn-warning" onclick="layThongTinPerson('${personID}')">Sửa</button>
-                    </td>
-                </tr>
-                `
-            } else {
-                let danhGiaVN = '';
-                if (danhGia == 'danhGia1') {
-                    danhGiaVN = 'Rất tốt';
-                } else if (danhGia == 'danhGia2') {
-                    danhGiaVN = 'Tốt';
-                } else if (danhGia == 'danhGia3') {
-                    danhGiaVN = 'Bình thường';
-                } else if (danhGia == 'danhGia4') {
-                    danhGiaVN = 'Không tốt';
-                } else if (danhGia == 'danhGia5') {
-                    danhGiaVN = 'Tệ'
-                }
-                return `
-                <tr>
-                    <td>${personID}</td>
-                    <td>${hoTen}</td>
-                    <td>${email}</td>
-                    <td>${diaChi}</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>${tenCty}</td>
-                    <td>${giaTriHoaDon}</td>
-                    <td>${danhGiaVN}</td>
-                    <td>
-                    <button class="btn btn-danger" onclick="xoaPerson('${personID}')">Xoá</button>
-                    <button class="btn btn-warning" onclick="layThongTinPerson('${personID}')">Sửa</button>
-                    </td>
-                </tr>
-                `
+            let { personID, hoTen, email, diaChi, loaiPerson, diemTB, tinhLuong, tenCty, giaTriHoaDon, danhGia } = person;
+            let danhGiaVN = '';
+            if (danhGia == 'danhGia1') {
+                danhGiaVN = 'Rất tốt';
+            } else if (danhGia == 'danhGia2') {
+                danhGiaVN = 'Tốt';
+            } else if (danhGia == 'danhGia3') {
+                danhGiaVN = 'Bình thường';
+            } else if (danhGia == 'danhGia4') {
+                danhGiaVN = 'Không tốt';
+            } else if (danhGia == 'danhGia5') {
+                danhGiaVN = 'Tệ'
             }
 
+            return `
+                <tr>
+                    <td>${personID}</td>
+                    <td>${hoTen}</td>
+                    <td>${email}</td>
+                    <td>${diaChi}</td>
+                    <td>${loaiPerson == 'hocVien' ? diemTB() : 'X'}</td>
+                    <td>${loaiPerson == 'nhanVien' ? tinhLuong() : 'X'}</td>
+                    <td>${loaiPerson == 'khachHang' ? tenCty : 'X'}</td>
+                    <td>${loaiPerson == 'khachHang' ? giaTriHoaDon : 'X'}</td>
+                    <td>${loaiPerson == 'khachHang' ? danhGiaVN : 'X'}</td>
+                    <td>
+                    <button class="btn btn-danger" onclick="xoaPerson('${personID}')">Xoá</button>
+                    <button class="btn btn-warning" onclick="layThongTinPerson('${personID}')">Sửa</button>
+                    </td>
+                </tr>
+                `
         }).join("");
         // console.log(content);
         document.getElementById('tbodyPerson').innerHTML = content;
@@ -122,7 +83,7 @@ export default class ListPerson {
             document.getElementById('btnThem').click();
             let arrInput = document.querySelectorAll('#personForm input, #personForm select');
             for (let item of arrInput) {
-                let {id} = item;
+                let { id } = item;
                 item.value = person[id];
             }
         }
@@ -138,88 +99,164 @@ export default class ListPerson {
     }
 
     sortNames() {
-        // Create a copy of the original array to avoid modifying the input array
-        let sortedNames = this.arrListPerson;
-        // console.log(this.arrListPerson);
-        
-        sortedNames.sort((a, b) => {
-          // Convert names to lowercase for case-insensitive sorting
-          let nameA = a.hoTen.toLowerCase();
-          let nameB = b.hoTen.toLowerCase();
-          
-          // Compare the lowercase names and return the appropriate value
-          if (nameA < nameB) {
-            return -1; // nameA comes before nameB
-          } else if (nameA > nameB) {
-            return 1; // nameA comes after nameB
-          } else {
-            return 0; // names are equal
-          }
-        });
-        
-        // console.log(sortedNames);
-        this.renderPerson();
-        // return sortedNames;
-      };  
+        this.arrListPerson.sort((a, b) => {
+            let nameA = a.hoTen.toLowerCase();
+            let nameB = b.hoTen.toLowerCase();
 
-      filterPerson() {
-        let person = this.arrListPerson;
-        let content = "";
-        if (person.loaiPerson == "hocVien") {
-            return content = `
-            <tr>
-                    <td>${person.personID}</td>
-                    <td>${person.hoTen}</td>
-                    <td>${person.email}</td>
-                    <td>${person.diaChi}</td>
-                    <td>${person.diemTB()}</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
+            if (nameA < nameB) {
+                return -1;
+            } else if (nameA > nameB) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
+    };
+
+    filterPersonHocVien() {
+        // let content = '';
+        let arrLocPerson = this.arrListPerson.reduce((arrHocVien, item, index) => {
+            if (item.loaiPerson == 'hocVien') {
+                arrHocVien.push(item);
+            }
+            return arrHocVien;
+        },[]);
+        // console.log(arrLocPerson);
+        let content = arrLocPerson.map((item, index) => {
+            let person = new Person();
+            Object.assign(person, item);
+            console.log(person);
+            let { personID, hoTen, email, diaChi, loaiPerson, diemTB, tinhLuong, tenCty, giaTriHoaDon, danhGia } = person;
+            let danhGiaVN = '';
+            if (danhGia == 'danhGia1') {
+                danhGiaVN = 'Rất tốt';
+            } else if (danhGia == 'danhGia2') {
+                danhGiaVN = 'Tốt';
+            } else if (danhGia == 'danhGia3') {
+                danhGiaVN = 'Bình thường';
+            } else if (danhGia == 'danhGia4') {
+                danhGiaVN = 'Không tốt';
+            } else if (danhGia == 'danhGia5') {
+                danhGiaVN = 'Tệ'
+            }
+
+            return `
+                <tr>
+                    <td>${personID}</td>
+                    <td>${hoTen}</td>
+                    <td>${email}</td>
+                    <td>${diaChi}</td>
+                    <td>${loaiPerson == 'hocVien' ? diemTB() : 'X'}</td>
+                    <td>${loaiPerson == 'nhanVien' ? tinhLuong() : 'X'}</td>
+                    <td>${loaiPerson == 'khachHang' ? tenCty : 'X'}</td>
+                    <td>${loaiPerson == 'khachHang' ? giaTriHoaDon : 'X'}</td>
+                    <td>${loaiPerson == 'khachHang' ? danhGiaVN : 'X'}</td>
                     <td>
-                    <button class="btn btn-danger" onclick="xoaPerson('${person.personID}')">Xoá</button>
-                    <button class="btn btn-warning" onclick="layThongTinPerson('${person.personID}')">Sửa</button>
+                    <button class="btn btn-danger" onclick="xoaPerson('${personID}')">Xoá</button>
+                    <button class="btn btn-warning" onclick="layThongTinPerson('${personID}')">Sửa</button>
                     </td>
                 </tr>
-            `
-        } else if (person.loaiPerson == "nhanVien") {
-            return content = `
-            <tr>
-            <td>${person.personID}</td>
-            <td>${person.hoTen}</td>
-            <td>${person.email}</td>
-            <td>${person.diaChi}</td>
-            <td>X</td>
-            <td>${person.tinhLuong()}</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            <td>
-            <button class="btn btn-danger" onclick="xoaPerson('${person.personID}')">Xoá</button>
-            <button class="btn btn-warning" onclick="layThongTinPerson('${person.personID}')">Sửa</button>
-            </td>
-        </tr>
-            `
-        } else if (person.loaiPerson == "khachHang") {
-            return content = `
-            <tr>
-            <td>${person.personID}</td>
-            <td>${person.hoTen}</td>
-            <td>${person.email}</td>
-            <td>${person.diaChi}</td>
-            <td>X</td>
-            <td>X</td>
-            <td>${person.tenCty}</td>
-            <td>${person.giaTriHoaDon}</td>
-            <td>${person.danhGia}</td>
-            <td>
-            <button class="btn btn-danger" onclick="xoaPerson('${person.personID}')">Xoá</button>
-            <button class="btn btn-warning" onclick="layThongTinPerson('${person.personID}')">Sửa</button>
-            </td>
-        </tr>
-            `
-        }
-      }
+                `
+        }).join("");
+        // console.log(content);
+        document.getElementById('tbodyPerson').innerHTML = content;
+    }
+    filterPersonNhanVien() {
+        // let content = '';
+        let arrLocPerson = this.arrListPerson.reduce((arrNhanVien, item, index) => {
+            if (item.loaiPerson == 'nhanVien') {
+                arrNhanVien.push(item);
+            }
+            return arrNhanVien;
+        },[]);
+        // console.log(arrLocPerson);
+        let content = arrLocPerson.map((item, index) => {
+            let person = new Person();
+            Object.assign(person, item);
+            console.log(person);
+            let { personID, hoTen, email, diaChi, loaiPerson, diemTB, tinhLuong, tenCty, giaTriHoaDon, danhGia } = person;
+            let danhGiaVN = '';
+            if (danhGia == 'danhGia1') {
+                danhGiaVN = 'Rất tốt';
+            } else if (danhGia == 'danhGia2') {
+                danhGiaVN = 'Tốt';
+            } else if (danhGia == 'danhGia3') {
+                danhGiaVN = 'Bình thường';
+            } else if (danhGia == 'danhGia4') {
+                danhGiaVN = 'Không tốt';
+            } else if (danhGia == 'danhGia5') {
+                danhGiaVN = 'Tệ'
+            }
+
+            return `
+                <tr>
+                    <td>${personID}</td>
+                    <td>${hoTen}</td>
+                    <td>${email}</td>
+                    <td>${diaChi}</td>
+                    <td>${loaiPerson == 'hocVien' ? diemTB() : 'X'}</td>
+                    <td>${loaiPerson == 'nhanVien' ? tinhLuong() : 'X'}</td>
+                    <td>${loaiPerson == 'khachHang' ? tenCty : 'X'}</td>
+                    <td>${loaiPerson == 'khachHang' ? giaTriHoaDon : 'X'}</td>
+                    <td>${loaiPerson == 'khachHang' ? danhGiaVN : 'X'}</td>
+                    <td>
+                    <button class="btn btn-danger" onclick="xoaPerson('${personID}')">Xoá</button>
+                    <button class="btn btn-warning" onclick="layThongTinPerson('${personID}')">Sửa</button>
+                    </td>
+                </tr>
+                `
+        }).join("");
+        // console.log(content);
+        document.getElementById('tbodyPerson').innerHTML = content;
+    }
+    filterPersonKhachHang() {
+        // let content = '';
+        let arrLocPerson = this.arrListPerson.reduce((arrKhachHang, item, index) => {
+            if (item.loaiPerson == 'khachHang') {
+                arrKhachHang.push(item);
+            }
+            return arrKhachHang;
+        },[]);
+        // console.log(arrLocPerson);
+        let content = arrLocPerson.map((item, index) => {
+            let person = new Person();
+            Object.assign(person, item);
+            console.log(person);
+            let { personID, hoTen, email, diaChi, loaiPerson, diemTB, tinhLuong, tenCty, giaTriHoaDon, danhGia } = person;
+            let danhGiaVN = '';
+            if (danhGia == 'danhGia1') {
+                danhGiaVN = 'Rất tốt';
+            } else if (danhGia == 'danhGia2') {
+                danhGiaVN = 'Tốt';
+            } else if (danhGia == 'danhGia3') {
+                danhGiaVN = 'Bình thường';
+            } else if (danhGia == 'danhGia4') {
+                danhGiaVN = 'Không tốt';
+            } else if (danhGia == 'danhGia5') {
+                danhGiaVN = 'Tệ'
+            }
+
+            return `
+                <tr>
+                    <td>${personID}</td>
+                    <td>${hoTen}</td>
+                    <td>${email}</td>
+                    <td>${diaChi}</td>
+                    <td>${loaiPerson == 'hocVien' ? diemTB() : 'X'}</td>
+                    <td>${loaiPerson == 'nhanVien' ? tinhLuong() : 'X'}</td>
+                    <td>${loaiPerson == 'khachHang' ? tenCty : 'X'}</td>
+                    <td>${loaiPerson == 'khachHang' ? giaTriHoaDon : 'X'}</td>
+                    <td>${loaiPerson == 'khachHang' ? danhGiaVN : 'X'}</td>
+                    <td>
+                    <button class="btn btn-danger" onclick="xoaPerson('${personID}')">Xoá</button>
+                    <button class="btn btn-warning" onclick="layThongTinPerson('${personID}')">Sửa</button>
+                    </td>
+                </tr>
+                `
+        }).join("");
+        // console.log(content);
+        document.getElementById('tbodyPerson').innerHTML = content;
+    }
 
 }

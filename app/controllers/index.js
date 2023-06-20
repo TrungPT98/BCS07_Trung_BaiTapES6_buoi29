@@ -14,7 +14,6 @@ document.getElementById('btnThemPerson').addEventListener
     ('click', () => {
         let arrInput = document.querySelectorAll('#personForm input, #personForm select');
         let person = new Person();
-        // Object.assign(person, item);
 
         for (let item of arrInput) {
             let { id, value } = item;
@@ -85,14 +84,26 @@ document.getElementById('btnCapNhatPerson').onclick = () => {
     listPerson.chinhSuaPerson(person);
 }
 
-// let name = ['B', 'D', 'a', 'y', 'G'];
 document.getElementById('sapXep').onclick = () => {
-    // let noe = [listPerson.layLocal()];
-    // console.log(noe);
     listPerson.sortNames();
-    // console.log(name);
+    listPerson.renderPerson();
+
 }
 
 document.getElementById('locPerson').onclick = () => {
-    listPerson.filterPerson();
+
+
+    let locPerson = document.getElementById('selLoai').value*1;
+
+    if (locPerson == 1) {
+        listPerson.filterPersonHocVien();
+    } else if (locPerson == 2) {
+        listPerson.filterPersonNhanVien();
+    } else if (locPerson == 3) {
+        listPerson.filterPersonKhachHang();
+    }
+
+}
+document.getElementById('reset').onclick = () => {
+    listPerson.renderPerson();
 }
