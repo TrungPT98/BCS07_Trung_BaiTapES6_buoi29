@@ -19,11 +19,11 @@ document.getElementById('btnThemPerson').addEventListener
             let { id, value } = item;
             person[id] = value;
         }
-        console.log(person);
-        listPerson.themPerson(person)
+        // console.log(person);
+        listPerson.themPerson(person);
         listPerson.renderPerson();
         listPerson.luuLocal();
-        document.getElementById('btnClose').click();
+
     });
 
 document.getElementById('loaiPerson').addEventListener('change', () => {
@@ -80,7 +80,7 @@ document.getElementById('btnCapNhatPerson').onclick = () => {
         let { id, value } = item;
         person[id] = value;
     }
-    console.log(person);
+    // console.log(person);
     listPerson.chinhSuaPerson(person);
 }
 
@@ -93,7 +93,7 @@ document.getElementById('sapXep').onclick = () => {
 document.getElementById('locPerson').onclick = () => {
 
 
-    let locPerson = document.getElementById('selLoai').value*1;
+    let locPerson = document.getElementById('selLoai').value * 1;
 
     if (locPerson == 1) {
         listPerson.filterPersonHocVien();
@@ -107,3 +107,10 @@ document.getElementById('locPerson').onclick = () => {
 document.getElementById('reset').onclick = () => {
     listPerson.renderPerson();
 }
+
+window.timKiemPerson = (event) => {
+    let value = event.target.value;
+    // console.log(value);
+    listPerson.timKiemPerson(value);
+
+};
